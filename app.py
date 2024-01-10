@@ -2,6 +2,7 @@ import os
 
 restaurantes = []
 
+
 def exibir_nome_programa():
     print('''
     █▀ ▄▀█ █▄▄ █▀█ █▀█   █▀▀ ▀▄▀ █▀█ █▀█ █▀▀ █▀ █▀
@@ -43,11 +44,17 @@ def opcao_invalida():
 def finalizar_app():
     exibir_subtitulo('Finalizando app!')
 
+
 def cadastrar_restaurante():
-    os.system('clear')
-    restaurante_escolhido = input('Digite o nome do restaurante... ')
+    restaurante_nome = input('Digite o nome do restaurante... ')
+    restaurante_categoria = input('Digite a cetegoria do restaurante... ')
+    restaurante_escolhido = {
+        'nome': restaurante_nome,
+        'categoria': restaurante_categoria,
+        'ativo': True
+    }
     restaurantes.append(restaurante_escolhido)
-    print('O restaurante {} foi cadastrado com sucesso'.format(restaurante_escolhido))
+    print('O restaurante {} foi cadastrado com sucesso'.format(restaurante_escolhido.get('nome')))
     voltar_menu_principal()
 
 
@@ -55,15 +62,22 @@ def exibir_subtitulo(texto):
     os.system('clear')
     print(texto)
 
+
 def voltar_menu_principal():
     input('Digite qualquer tecla para voltar ao menu: ')
     main()
 
+
 def listar_restaurate():
     exibir_subtitulo('Lista de restaurantes ')
     for restaurante in restaurantes:
-        print('Restaurantes -> {}'.format(restaurante))
+        print('''
+        Nome: {}
+        Categoria {}
+        Ativo {}
+        '''.format(restaurante.get('nome'), restaurante.get('categoria'), restaurante.get('ativo')))
     voltar_menu_principal()
+
 
 def main():
     os.system('clear')
