@@ -46,6 +46,7 @@ def finalizar_app():
 
 
 def cadastrar_restaurante():
+    exibir_subtitulo('Cadastrar restaurante ')
     restaurante_nome = input('Digite o nome do restaurante... ')
     restaurante_categoria = input('Digite a cetegoria do restaurante... ')
     restaurante_escolhido = {
@@ -60,7 +61,10 @@ def cadastrar_restaurante():
 
 def exibir_subtitulo(texto):
     os.system('clear')
+    tamanho = '*' * len(texto)
+    print(tamanho)
     print(texto)
+    print(tamanho)
 
 
 def voltar_menu_principal():
