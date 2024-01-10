@@ -27,7 +27,7 @@ def escolher_opcao():
             case 2:
                 listar_restaurate()
             case 3:
-                print('Ativar restaurante')
+                ativar_desativar_restaurante()
             case 4:
                 finalizar_app()
             case _:
@@ -73,9 +73,25 @@ def listar_restaurate():
     for restaurante in restaurantes:
         print('''
         Nome: {}
-        Categoria {}
-        Ativo {}
+        Categoria: {}
+        Ativo: {}
         '''.format(restaurante.get('nome'), restaurante.get('categoria'), restaurante.get('ativo')))
+    voltar_menu_principal()
+
+
+def ativar_desativar_restaurante():
+    exibir_subtitulo('Ativando ou desativando restaurante... ')
+    restaurante_escolhido = input('Digite o nome do restaurante para ativar ou desativar... ')
+    for restaurante in restaurantes:
+        if restaurante.get('nome') == restaurante_escolhido:
+            restaurante['ativo'] = not restaurante.get('ativo')
+            print('O restaurante {} foi ativado com sucesso'.format(restaurante.get('nome'))) if restaurante.get(
+                'ativo') else print('O restaurante {'
+                                    '} foi '
+                                    'desativado com '
+                                    'sucesso'.format(restaurante.get('nome')))
+        else:
+            print('Restaurante procurado nao foi encontrado... ')
     voltar_menu_principal()
 
 
